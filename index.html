@@ -500,12 +500,10 @@ padding:20px;
 
 
 
-<audio id="music" loop>
+<audio id="music" loop preload="auto">
 
-<source src="./musik/music.mp3.mp3" type="audio/mpeg">
-
+<source src="./musik/music.mp3" type="audio/mpeg">
 </audio>
-
 
 
 
@@ -650,7 +648,16 @@ function openGift(){
 
 let music=document.getElementById("music");
 
-music.play().catch(()=>{});
+
+music.volume = 0.5;
+
+music.play()
+.then(() => {
+    console.log("Музыка играет");
+})
+.catch(error => {
+    console.log("Музыка заблокирована", error);
+});
 
 
 
