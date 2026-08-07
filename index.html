@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Племянница</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:#050014;
+    color:white;
+
+}
+
+
+.screen{
+
+    position:absolute;
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    transition:2s;
+
+}
+
+
+.hidden{
+
+    opacity:0;
+    pointer-events:none;
+
+}
+
+
+/* ===== ЗВЁЗДНОЕ НЕБО ===== */
+
+
+#start{
+    background:
+    radial-gradient(circle at top,#26344f,#050014);
+}
+
+.star{
+
+position:absolute;
+width:3px;
+height:3px;
+
+background:white;
+border-radius:50%;
+
+animation:twinkle 2s infinite;
+
+}
+
+
+@keyframes twinkle{
+
+50%{
+opacity:.2;
+}
+
+}
+
+
+
+h1{
+
+font-size:clamp(32px,6vw,70px);
+
+text-align:center;
+
+text-shadow:
+
+0 0 20px #ff69b4,
+0 0 50px #ff1493;
+
+animation:show 3s;
+
+}
+
+
+@keyframes show{
+
+from{
+
+opacity:0;
+transform:scale(.5);
+
+}
+
+to{
+
+opacity:1;
+transform:scale(1);
+
+}
+
+}
+
+
+/* кнопка */
+
+
+button{
+
+margin-top:40px;
+
+padding:18px 45px;
+
+border:0;
+
+border-radius:50px;
+
+font-size:22px;
+
+cursor:pointer;
+
+color:white;
+
+background:
+
+linear-gradient(
+45deg,
+#ffd700,
+#000000
+);
+box-shadow:
+
+0 0 30px pink;
+
+}
+
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+
+/* ===== ПОДАРОК ===== */
+
+
+#giftScene{
+
+background:
+
+radial-gradient(circle,#4d1b4d,#050014);
+
+}
+
+
+
+.gift{
+
+position:relative;
+
+width:220px;
+
+height:170px;
+
+background:
+
+linear-gradient(
+90deg,
+#ff4fa3,
+#ff1493
+);
+
+border-radius:15px;
+
+box-shadow:
+
+0 0 60px pink;
+
+}
+
+
+
+.gift:before{
+
+content:"";
+
+position:absolute;
+
+left:88px;
+
+width:45px;
+
+height:100%;
+
+background:#ffd700;
+
+}
+
+
+
+
+.lid{
+
+position:absolute;
+
+top:-55px;
+
+left:-15px;
+
+width:250px;
+
+height:60px;
+
+background:
+
+linear-gradient(
+90deg,
+#ff9bd4,
+#ff1493
+);
+
+border-radius:15px;
+
+transition:2s;
+
+}
+
+
+
+.open .lid{
+
+transform:
+
+translateY(-140px)
+rotate(-25deg);
+
+}
+
+
+
+.open{
+
+animation:
+
+jump 1s infinite;
+
+}
+
+
+@keyframes jump{
+
+50%{
+
+transform:translateY(-30px);
+
+}
+
+}
+
+
+
+/* частицы */
+
+
+.party{
+
+position:absolute;
+
+font-size:40px;
+
+animation:fly 5s linear forwards;
+
+}
+
+
+@keyframes fly{
+
+
+from{
+
+transform:
+
+translateY(100vh)
+rotate(0deg);
+
+}
+
+
+to{
+
+transform:
+
+translateY(-120vh)
+rotate(720deg);
+
+}
+
+}
+
+/* ===== ДЫМ И СВЕЧЕНИЕ ===== */
+
+
+.smoke{
+
+position:absolute;
+
+font-size:70px;
+
+animation:smoke 3s forwards;
+
+}
+
+
+@keyframes smoke{
+
+
+from{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
+
+
+to{
+
+opacity:0;
+
+transform:translateY(-250px) scale(2);
+
+}
+
+
+}
+
+
+
+
+/* ===== ФИНАЛ ===== */
+
+
+#final{
+
+background:
+
+radial-gradient(circle,#6b285c,#050014);
+
+}
+
+
+
+#message{
+
+margin-top:40px;
+
+font-size:
+
+clamp(35px,7vw,90px);
+
+text-align:center;
+
+color:#ffb6e6;
+
+text-shadow:
+
+0 0 30px pink;
+
+animation:pulse 2s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+
+50%{
+
+transform:scale(1.1);
+
+}
+
+}
+
+
+
+
+
+/* падающие золотые частицы */
+
+
+.gold{
+
+position:absolute;
+
+width:5px;
+
+height:5px;
+
+background:#ffd700;
+
+border-radius:50%;
+
+animation:fall linear infinite;
+
+}
+
+
+
+@keyframes fall{
+
+
+from{
+
+transform:translateY(-20px);
+
+}
+
+
+to{
+
+transform:translateY(110vh);
+
+}
+
+}
+
+
+
+
+/* мобильные устройства */
+
+
+@media(max-width:600px){
+
+
+.gift{
+
+width:160px;
+
+height:130px;
+
+}
+
+
+
+.lid{
+
+width:190px;
+
+height:50px;
+
+}
+
+
+
+button{
+
+font-size:18px;
+
+padding:15px 30px;
+
+}
+
+
+h1{
+
+padding:20px;
+
+}
+
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<audio id="music" loop>
+
+<source src="/musik/music.mp3.mp3" type="audio/mpeg">
+
+</audio>
+
+
+
+
+<!-- ЭКРАН 1 -->
+
+
+<div id="start" class="screen">
+
+
+<h1>
+
+✨ У нас есть для тебя сюрприз… ✨
+
+</h1>
+
+
+<button onclick="openGift()">
+
+🎁 Открыть подарок
+
+</button>
+
+
+</div>
+
+
+
+
+<!-- ЭКРАН 2 -->
+
+
+<div id="giftScene" class="screen hidden">
+
+
+<div id="gift" class="gift">
+
+<div class="lid"></div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- ЭКРАН 3 -->
+
+
+<div id="party" class="screen hidden">
+
+</div>
+
+
+
+
+
+<!-- ЭКРАН 4 -->
+
+
+<div id="final" class="screen hidden">
+
+
+<h1>
+
+🎉 Поздравляем! 🎉
+
+</h1>
+
+
+
+<div id="message">
+
+</div>
+
+
+
+<button onclick="location.reload()">
+
+🔄 Посмотреть ещё раз
+
+</button>
+
+
+
+</div>
+
+
+
+<script>
+    
+// создаём звёзды
+
+for(let i=0;i<150;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDelay=
+Math.random()*3+"s";
+
+
+document.body.appendChild(star);
+
+}
+
+
+
+// золотые частицы
+
+for(let i=0;i<80;i++){
+
+let gold=document.createElement("div");
+
+gold.className="gold";
+
+gold.style.left=Math.random()*100+"vw";
+
+gold.style.animationDuration=
+(3+Math.random()*5)+"s";
+
+gold.style.animationDelay=
+Math.random()*5+"s";
+
+
+document.body.appendChild(gold);
+
+}
+
+
+
+
+function openGift(){
+
+
+/* музыка */
+
+let music=document.getElementById("music");
+
+music.play().catch(()=>{});
+
+
+
+/* вибрация телефона */
+
+if(navigator.vibrate){
+
+navigator.vibrate([200,100,200]);
+
+}
+
+
+
+
+/* первый экран убрать */
+
+document.getElementById("start")
+.classList.add("hidden");
+
+
+
+/* подарок показать */
+
+let giftScene=
+document.getElementById("giftScene");
+
+
+giftScene.classList.remove("hidden");
+
+
+
+setTimeout(()=>{
+
+
+let gift=document.getElementById("gift");
+
+gift.classList.add("open");
+
+createSmoke();
+
+
+},1000);
+
+
+
+
+
+setTimeout(()=>{
+
+
+giftScene.classList.add("hidden");
+
+
+createParty();
+
+
+},4500);
+
+
+
+
+
+
+setTimeout(()=>{
+
+
+showFinal();
+
+
+},7500);
+
+
+
+}
+
+
+
+
+
+// дым из коробки
+
+
+function createSmoke(){
+
+
+for(let i=0;i<5;i++){
+
+
+let smoke=document.createElement("div");
+
+
+smoke.className="smoke";
+
+
+smoke.innerHTML="☁️";
+
+
+smoke.style.left=
+(45+Math.random()*10)+"%";
+
+
+smoke.style.top="40%";
+
+
+document.body.appendChild(smoke);
+
+
+
+setTimeout(()=>{
+
+smoke.remove();
+
+},3000);
+
+
+}
+
+
+}
+
+
+
+
+
+
+// праздник
+
+
+function createParty(){
+
+
+let items=[
+
+
+"🎈",
+"🎈",
+"🎈",
+
+"💗",
+
+"❤️",
+
+"✨",
+
+"⭐",
+
+"🎀",
+
+"🌸",
+
+"🎊"
+
+
+];
+
+
+
+for(let i=0;i<400;i++){
+
+
+let item=document.createElement("div");
+
+
+item.className="party";
+
+
+item.innerHTML=
+items[
+Math.floor(Math.random()*items.length)
+];
+
+
+
+item.style.left=
+Math.random()*100+"vw";
+
+
+
+item.style.animationDuration=
+(3+Math.random()*5)+"s";
+
+
+
+document.body.appendChild(item);
+
+
+
+setTimeout(()=>{
+
+item.remove();
+
+},6000);
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+// финальный экран
+
+
+function showFinal(){
+
+
+
+let final=
+document.getElementById("final");
+
+
+final.classList.remove("hidden");
+
+
+
+let text=
+document.getElementById("message");
+
+
+
+setTimeout(()=>{
+
+
+text.innerHTML=
+
+"У вас будет…";
+
+
+},1000);
+
+
+
+
+setTimeout(()=>{
+
+
+text.innerHTML=
+
+" ПЛЕМЯННИЦА ";
+
+
+},3000);
+
+
+
+setTimeout(()=>{
+
+
+text.innerHTML+=
+
+"<br><small>Маленькая принцесса семьи 👑</small>";
+
+
+},4500);
+
+
+
+}
+</script>
+
+</body>
+</html>
